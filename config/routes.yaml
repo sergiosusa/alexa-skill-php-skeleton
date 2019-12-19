@@ -1,0 +1,7 @@
+ping:
+    path: /alexa/api/v1/ping
+    controller: App\Controller\AlexaController::ping
+
+intents:
+    path: /alexa/api/v1/intent
+    controller:  App\Controller\AlexaController::intent

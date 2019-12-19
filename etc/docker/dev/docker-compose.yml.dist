@@ -1,0 +1,36 @@
+version: '3.6'
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: etc/docker/dev/nginx/Dockerfile
+    container_name: alexa-skill_nginx
+    ports:
+      - "80:80"
+
+  fpm:
+    build:
+      context: .
+      dockerfile: etc/docker/dev/fpm/Dockerfile
+      args:
+        - USER_ID=1000
+        - GROUP_ID=1000
+        - HOST_IP=172.17.0.1 # For linux users
+#        - HOST_IP=host.docker.internal # For mac and windows
+    container_name: alexa-skill_fpm
+    volumes:
+      - .:/var/www/html
+
+  mysql:
+    image: mysql:5.7
+    container_name: alexa-skill_mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=alexa-skill
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
