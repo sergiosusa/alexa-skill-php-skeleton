@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Intent;
+namespace App\Service\Intent;
 
 use App\Entity\AlexaResponse;
 
 class AmazonHelpIntent implements IntentInterface
 {
-    private const TYPE = 'AMAZON.HelpIntent';
+    public const TYPE = 'AMAZON.HelpIntent';
 
     public function canHandle(String $intentType): bool
     {
@@ -17,7 +17,7 @@ class AmazonHelpIntent implements IntentInterface
     public function execute(array $request): AlexaResponse
     {
         return new AlexaResponse(
-            'Al dios de metal le puedes preguntar: ¿cuáles son los próximos conciertos en barcelona? o ¿qué conciertos hay en barcelona?.',
+            'Help intent.',
             false
         );
     }

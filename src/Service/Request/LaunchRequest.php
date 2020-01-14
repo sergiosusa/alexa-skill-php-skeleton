@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Request;
+namespace App\Service\Request;
 
 use App\Entity\AlexaResponse;
 
