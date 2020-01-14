@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Entity\Intent;
+namespace App\Service\Intent;
 
 use App\Entity\AlexaResponse;
 
-class AmazonStopIntent implements IntentInterface
+class AmazonCancelIntent implements IntentInterface
 {
-    public const TYPE = 'AMAZON.StopIntent';
+    public const TYPE = 'AMAZON.CancelIntent';
 
     public function canHandle(String $intentType): bool
     {
@@ -17,7 +17,7 @@ class AmazonStopIntent implements IntentInterface
     public function execute(array $request): AlexaResponse
     {
         return new AlexaResponse(
-            'Hasta la próxima y que los dioses del metal de acompañen.',
+            'Cancel intent.',
             true
         );
     }

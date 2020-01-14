@@ -5,8 +5,14 @@ services:
       context: .
       dockerfile: etc/docker/dev/nginx/Dockerfile
     container_name: alexa-skill_nginx
+    volumes:
+      - .:/var/www/alexa
+    depends_on:
+      - fpm
     ports:
       - "80:80"
+    networks:
+      - docker
 
   fpm:
     build:
@@ -18,8 +24,11 @@ services:
         - HOST_IP=172.17.0.1 # For linux users
 #        - HOST_IP=host.docker.internal # For mac and windows
     container_name: alexa-skill_fpm
+    working_dir: /var/www/alexa
     volumes:
-      - .:/var/www/html
+      - .:/var/www/alexa
+    networks:
+      - docker
 
   mysql:
     image: mysql:5.7
@@ -31,6 +40,11 @@ services:
       - MYSQL_DATABASE=alexa-skill
     volumes:
       - db_data:/var/lib/mysql
+    networks:
+      - docker
 
 volumes:
   db_data:
+
+networks:
+  docker: ~

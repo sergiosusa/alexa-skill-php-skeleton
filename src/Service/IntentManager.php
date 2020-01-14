@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\AlexaResponse;
-use App\Entity\Intent\IntentInterface;
 use App\Exception\IntentNotSupportedException;
+use App\Service\Intent\IntentInterface;
 
 class IntentManager
 {

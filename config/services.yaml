@@ -34,8 +34,8 @@ services:
 
     App\Service\AlexaRequestManager:
         arguments:
-            [['@App\Service\IntentRequest', '@App\Service\LaunchRequest',  '@App\Service\SessionEndedRequest']]
+            [['@App\Service\Request\IntentRequest', '@App\Service\Request\LaunchRequest',  '@App\Service\Request\SessionEndedRequest']]
 
     App\Service\IntentManager:
         arguments:
-            [['@App\Service\AmazonCancelIntent', '@App\Service\AmazonHelpIntent', '@App\Service\AmazonStopIntent']]
+            [['@App\Service\Intent\AmazonCancelIntent', '@App\Service\Intent\AmazonHelpIntent', '@App\Service\Intent\AmazonStopIntent', '@App\Service\Intent\JokeIntent']]

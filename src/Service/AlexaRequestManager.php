@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\AlexaResponse;
-use App\Entity\Request\AlexaRequestInterface;
 use App\Exception\AlexaRequestNotSupportedException;
+use App\Service\Request\AlexaRequestInterface;
 
 class AlexaRequestManager
 {
