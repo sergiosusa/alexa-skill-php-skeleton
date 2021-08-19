@@ -1,4 +1,4 @@
-ARG COMPOSER_VERSION="1.8.5"
+ARG COMPOSER_VERSION="2.1.5"
 
 FROM composer:${COMPOSER_VERSION} AS composer
 
@@ -31,6 +31,5 @@ USER user
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 RUN true \
  && composer global require --quiet \
-        hirak/prestissimo \
  && composer clear-cache --quiet \
 ;
